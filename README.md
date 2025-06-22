@@ -86,9 +86,10 @@ codectx .             # Explicitly scan the current directory
 
 #### Advanced Analysis
 ```bash
---health-check          Perform project health check
---complexity-analysis   Perform complexity analysis
---language-stats        Show language statistics
+--stats                 Show basic statistics
+--health-check          Perform project health check (requires --stats)
+--complexity-analysis   Perform complexity analysis (requires --stats)
+--language-stats        Show language statistics (requires --stats)
 ```
 
 ## Use Cases
@@ -101,8 +102,8 @@ codectx -e ts,tsx,json -l 100000 > project_context.txt
 
 ### Code Review Preparation
 ```bash
-# Output only changed files in Markdown
-codectx --git-only --format markdown -o review.md
+# Output only changed files in Markdown with statistics
+codectx --git-only --format markdown --stats --health-check -o review.md
 ```
 
 ### Documentation Generation

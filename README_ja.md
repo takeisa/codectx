@@ -86,9 +86,10 @@ codectx .             # カレントディレクトリをスキャン（明示�
 
 #### 高度な分析
 ```bash
---health-check          プロジェクト健全性チェックを実行
---complexity-analysis   複雑性分析を実行
---language-stats        言語統計を表示
+--stats                 基本統計を表示
+--health-check          プロジェクト健全性チェックを実行（--stats必須）
+--complexity-analysis   複雑性分析を実行（--stats必須）
+--language-stats        言語統計を表示（--stats必須）
 ```
 
 ## ユースケース
@@ -101,8 +102,8 @@ codectx -e ts,tsx,json -l 100000 > project_context.txt
 
 ### コードレビュー準備
 ```bash
-# 変更されたファイルのみをMarkdownで出力
-codectx --git-only --format markdown -o review.md
+# 変更されたファイルのみをMarkdownで統計付きで出力
+codectx --git-only --format markdown --stats --health-check -o review.md
 ```
 
 ### ドキュメント生成
